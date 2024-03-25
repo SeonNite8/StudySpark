@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="static\style.css">
+    <link
+        rel="shortcut icon"
+        href="Logo.png"
+        type="image/x-icon"
+    />
+</head>
+<body>
+  <header style="background-color:#101827;" class=" text-cyan-300 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span class=" text-cyan-300 ml-3 text-xl">StudySpark</span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <a class="mr-5 hover:text-cyan-900" href="{% url 'dashboard' %}">Dashboard</a>
+        <a class="mr-5 hover:text-cyan-900" href="{% url 'join_classes' %}">Join Class</a>
+        <a class="mr-5 hover:text-cyan-900" href="{% url 'create_class' %}">Create Class</a>
+        <a class="mr-5 hover:text-cyan-900" href="{% url 'subscription' %}">Subscription</a>
+      </nav>
+      <button class="font-bold text-sky-700 text-bold inline-flex items-center bg-cyan-500 border-0 py-1 px-3 focus:outline-none hover:bg-cyan-200 rounded text-base mt-4 md:mt-0" href="{% url 'login' %}">Login
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+      
+      <section class="text-gray-400 body-font bg-gray-900  full-height">
+        <div class="container px-5 py-24 mx-auto my-full ">
+          <div class="flex flex-wrap w-full mb-20">
+            <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+              <h1 class="sm:text-7xl text-2xl font-medium title-font mb-2 text-white">Dashboard</h1>
+              <div class="h-1 w-20 bg-blue-500 rounded"></div>
+            </div>
+            <p class="lg:w-1/2 w-full leading-relaxed text-gray-400 text-opacity-90">"Failure will never overtake me if my determination to succeed is strong enough." – Og Mandino</p>
+          </div>
+          <div class="bg-slate-800 flex flex-wrap -m-4 rounded-3xl overflow-hidden border-4 border-slate-800 p-4 ">
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-slate-950 bg-opacity-40 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" href="../../static/img/chemistry.jpg" alt="content">
+                <h3 class="tracking-widest text-blue-400 text-xs font-medium title-font">Mr Anupam Roy</h3>
+                <button class="text-3xl text-white font-medium title-font mb-4">Chemistry</button>
+                
+             
+            </div>
+          </div>
+
+          <div class="xl:w-1/4 md:w-1/2 p-4">
+            <div class="bg-gray-950 bg-opacity-40 p-6 rounded-lg">
+              <img class="h-40 rounded w-full object-cover object-center mb-6" href="../../static/img/physics.jpg" alt="content">
+              <h3 class="tracking-widest text-blue-400 text-xs font-medium title-font">Mrs Debosmita guho</h3>
+              <a href="{% url 'classroom' %}">
+                <button class="text-3xl text-white font-medium title-font mb-4">Physics</button>
+            </a>
+              
+          </div>
+        </div>
+        
+        </div>
+      </section>
+      
+
+  
+</body>
+</html>
