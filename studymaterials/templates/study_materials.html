@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Materials</title>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a202c;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2d3748;
+            padding: 10px 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            font-size: 16px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #2d3748;
+            background-color: #2d3748;
+            color: #ffffff;
+        }
+        select {
+            padding: 8px;
+            font-size: 16px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #2d3748;
+            background-color: #2d3748;
+            color: #ffffff;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #3182ce;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            background-color: #2d3748;
+            color: #ffffff;
+        }
+        li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        
+        li a:hover {
+            color: #ffff00; /* light yellow on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Study Materials</h1>
+    </header>
+    <div class="container">
+        <form method="GET" action="">
+            <input type="text" name="q" placeholder="Search..." value="{{ query }}">
+            <select name="subject">
+                <option value="" {% if not query and not request.GET.subject %}selected{% endif %}>All Subjects</option>
+                <option value="chemistry" {% if request.GET.subject == 'chemistry' %}selected{% endif %}>Chemistry</option>
+                <option value="physics" {% if request.GET.subject == 'physics' %}selected{% endif %}>Physics</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
+        {% if query %}
+            <p>Search results for: <strong>{{ query }}</strong></p>
+        {% endif %}
+        <ul>
+            {% for material in materials %}
+                <li><a href="{{ material.pdf.url }}" target="_blank">{{ material.title }}</a></li>
+            {% empty %}
+                <li>No study materials found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
